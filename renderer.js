@@ -7,3 +7,6 @@ document.getElementById('reset-to-system').addEventListener('click', async () =>
   await window.darkMode.system()
   document.getElementById('theme-source').innerHTML = 'System'
 })
+document.getElementById('open-in-browser').addEventListener('click', () => {
+  window.shell.open()
+})

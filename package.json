@@ -74,9 +74,8 @@
         {
           "name": "@electron-forge/maker-deb",
           "config": {
-            "options": {
-              "icon": "./images/icon.png"
-            }
+            "icon": "./images/icon.png",
+            "mimeType": ["x-scheme-handler/electron-fiddle"]
           }
         }
       ]
