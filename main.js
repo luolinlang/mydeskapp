@@ -1,4 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron/main')
+const { app, BrowserWindow, ipcMain, nativeTheme, globalShortcut,
+  dialog
+} = require('electron/main')
 const path = require('node:path')
 
 const createWindow = () => {
@@ -12,9 +14,33 @@ const createWindow = () => {
   })
 
   win.loadFile('index.html')
+
+  ipcMain.handle('dark-mode:toggle', () => {
+    if (nativeTheme.shouldUseDarkColors) {
+      nativeTheme.themeSource = 'light'
+    } else {4
+      nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+  })
+
+  ipcMain.handle('dark-mode:system', () => {
+    nativeTheme.themeSource = 'system'
+  })
+
+  
 }
 
 app.whenReady().then(() => {
+  globalShortcut.register('Alt+I', () => {
+    console.log('Electron loves global shortcuts!')
+    dialog.showMessageBox({
+      type: 'info',
+      title: '提示',
+      message: 'message'
+    });
+  })
+  
   ipcMain.handle('ping', () => 'pong')
   createWindow()
 
@@ -30,3 +56,7 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+try {
+  require('electron-reloader')(module, {});
+} catch (_) {}

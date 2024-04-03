@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
+    "startwatch": "nodemon --watch index.html --exec electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-forge package",
     "make": "electron-forge make",
@@ -31,9 +32,12 @@
     "debug": "^4.3.4",
     "deprecation": "^2.3.1",
     "electron": "^29.1.6",
+    "electron-reloader": "^1.2.3",
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
+    "mousetrap": "^1.6.5",
     "ms": "^2.1.3",
+    "nodemon": "^3.1.0",
     "universal-github-app-jwt": "^2.1.0",
     "universal-user-agent": "^7.0.2"
   },
